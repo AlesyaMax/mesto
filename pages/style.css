@@ -17,6 +17,8 @@
 @import url(../blocks/elements/__text/elements__text.css);
 @import url(../blocks/elements/__button_like/elements__button_like.css);
 @import url(../blocks/elements/__button-svg_like/elements__button-svg_like.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 
 
 
