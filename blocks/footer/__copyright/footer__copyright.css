@@ -8,3 +8,10 @@
   line-height: 21.78px;
   max-width: 318px;
 }
+
+@media (max-width: 700px) {
+  .footer__copyright {
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: 16.94px;
+  }
+}

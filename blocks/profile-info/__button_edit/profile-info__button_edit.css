@@ -6,3 +6,10 @@
   border: 1px solid #fff;
   background-color: #000;
 }
+
+@media (max-width: 700px) {
+  .profile-info__button_edit {
+    width: 18px;
+    height: 18px;
+  }
+}

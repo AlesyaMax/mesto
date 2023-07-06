@@ -7,3 +7,12 @@
   font-weight: 400;
   line-height: 21.78px;
 }
+
+@media (max-width: 700px) {
+  .profile-info__description {
+    margin-top: 14px;
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: 16.94px;
+    padding-right: 28px;
+  }
+}
