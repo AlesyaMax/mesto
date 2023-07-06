@@ -1,0 +1,9 @@
+.profile-info {
+  margin: 0 0 0 30px;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 336px;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
