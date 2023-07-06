@@ -1,5 +1,5 @@
 .header {
-  margin: 45px 15.625% 0 15.625%;
+  margin: 45px auto 0 auto;
   max-width: 880px;
   border-bottom: 1px solid rgb(84, 84, 84, .7);
 }
