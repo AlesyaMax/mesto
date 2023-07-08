@@ -1,9 +1,12 @@
 .elements__button_like {
   margin: 0 0;
   padding: 0 0;
-  width: 22px;
+  width: 24.23px;
   height: 19px;
   border: none;
   background: none;
   box-shadow: none;
+  background-image: url(../../../images/like-white.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }

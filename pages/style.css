@@ -1,6 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../fonts/fonts.css);
 @import url(../blocks/page/page.css);
+@import url(../blocks/button/button.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/profile/profile.css);
@@ -16,7 +17,7 @@
 @import url(../blocks/elements/__caption/elements__caption.css);
 @import url(../blocks/elements/__text/elements__text.css);
 @import url(../blocks/elements/__button_like/elements__button_like.css);
-@import url(../blocks/elements/__button-svg_like/elements__button-svg_like.css);
+@import url(../blocks/elements/__button_like/_active/elements__button_like_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/form/form.css);
@@ -27,4 +28,3 @@
 @import url(../blocks/form/__button_save/form__button_save.css);
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/overlay/_display/overlay_display_none.css);
-@import url(../blocks/overlay/_display/overlay_display_visible.css);
