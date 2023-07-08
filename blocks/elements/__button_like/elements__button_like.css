@@ -4,5 +4,6 @@
   width: 22px;
   height: 19px;
   border: none;
-  background-color: #fff;
+  background: none;
+  box-shadow: none;
 }

@@ -4,7 +4,8 @@
   width: 150px;
   height: 50px;
   border: 2px solid #fff;
-  background-color: #000;
+  background: none;
+  box-shadow: none;
   justify-self: flex-end;
 }
 
