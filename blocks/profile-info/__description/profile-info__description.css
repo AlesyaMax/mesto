@@ -6,13 +6,17 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 21.78px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 700px) {
   .profile-info__description {
+    max-width: 254px;
     margin-top: 14px;
     font-size: clamp(14px, 4vw, 18px);
     line-height: 16.94px;
-    padding-right: 28px;
+    margin-right: 28px;
   }
 }

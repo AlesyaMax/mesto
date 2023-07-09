@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/style.css">
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <main>
@@ -15,7 +15,7 @@
     <section class="profile">
       <img class="profile__avatar" src="./images/avatar.png" alt="фото профиля">
       <div class="profile-info">
-        <h2 class="profile-info__name">Жак-Ив Кусто</h2>
+        <h1 class="profile-info__name">Жак-Ив Кусто</h1>
         <button class="profile-info__button_edit button" type="button"></button>
         <p class="profile-info__description">Исследователь океана</p>
       </div>
@@ -74,17 +74,17 @@
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-  <div class="overlay overlay_display_none">
-    <form class="form">
-      <button class="form__button_close button" type="button"></button>
-      <h2 class="form__title">Редактировать профиль</h2>
-      <fieldset class="form__edit">
-        <input class="form__field form__input_type_name" type="text">
-        <input class="form__field form__input_type_description" type="text">
-        <button class="form__button_save button" type="button">Сохранить</button>
+  <div class="popup">
+    <form class="popup__container">
+      <button class="container__button_close button" type="button"></button>
+      <h2 class="container__title">Редактировать профиль</h2>
+      <fieldset class="container__edit">
+        <input class="container__field container__input_type_name" type="text">
+        <input class="container__field container__input_type_description" type="text">
+        <button class="container__button_save button" type="submit">Сохранить</button>
       </fieldset>
     </form>
   </div>
-  <script src="./script.js"></script>
+  <script src="./pages/index.js"></script>
 </body>
 </html>
