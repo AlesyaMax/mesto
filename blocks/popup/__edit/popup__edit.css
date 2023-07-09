@@ -1,4 +1,4 @@
-.container__edit {
+.popup__edit {
   margin: 0 0;
   padding: 0 36px 37px 36px;
   border: none;
@@ -9,7 +9,7 @@
 
 
 @media (max-width: 600px) {
-  .container__edit {
+  .popup__edit {
     width: 84.4%;
     padding-left: 22px;
     padding-right: 22px;

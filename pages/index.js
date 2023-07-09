@@ -1,14 +1,12 @@
-console.log('скрипт подключен');
-
 const popupForm = document.querySelector('.popup');
-const editButton = document.querySelector('.profile-info__button_edit');
-const saveButton = popupForm.querySelector('.container__button_save');
-const closeButton = popupForm.querySelector('.container__button_close');
+const editButton = document.querySelector('.profile-info__edit');
+const saveButton = popupForm.querySelector('.popup__save');
+const closeButton = popupForm.querySelector('.popup__close');
 const elements = document.querySelector('.elements');
-const likeButton = elements.querySelectorAll('.elements__button_like');
+const likeButton = elements.querySelectorAll('.elements__like');
 
-const inputName = popupForm.querySelector('.container__input_type_name');
-const inputDescription = popupForm.querySelector('.container__input_type_description');
+const inputName = popupForm.querySelector('.popup__input_type_name');
+const inputDescription = popupForm.querySelector('.popup__input_type_description');
 const profileName = document.querySelector('.profile-info__name');
 const profileDescription = document.querySelector('.profile-info__description');
 
@@ -37,6 +35,6 @@ elements.addEventListener('click', function(event) {
   let count = likeButton.length;
   for (i=0; i < count; i++) {
     if (event.target == likeButton[i]) {
-      likeButton[i].classList.toggle('elements__button_like_active')}
+      likeButton[i].classList.toggle('elements__like_active')}
   }
 });
