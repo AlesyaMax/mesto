@@ -1,5 +1,5 @@
-.profile-info__edit {
-  margin: 0 0;
+.profile__edit {
+  margin: 22px 0 0 18px;
   padding: 0 0;
   width: 24px;
   height: 24px;
@@ -11,9 +11,16 @@
   background-position: center;
 }
 
+.profile__edit:hover {
+  opacity: 0.6;
+}
+
 @media (max-width: 700px) {
-  .profile-info__edit {
+  .profile__edit {
     width: 18px;
     height: 18px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    margin-left: 10px;
   }
 }
