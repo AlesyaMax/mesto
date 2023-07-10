@@ -8,83 +8,83 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
-  <main>
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип">
-    </header>
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип">
+  </header>
+  <main> 
     <section class="profile">
       <img class="profile__avatar" src="./images/avatar.png" alt="фото профиля">
-      <div class="profile-info">
-        <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-        <button class="profile-info__edit button" type="button"></button>
-        <p class="profile-info__description">Исследователь океана</p>
-      </div>
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button class="profile__edit button" type="button"></button>
+      <p class="profile__description">Исследователь океана</p>
       <button class="profile__add button" type="button"></button>
     </section>
+
     <section class="elements">
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element1.png" alt="Карачаевск">
         <div class="elements__caption">
           <h2 class="elements__text">Карачаевск</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element2.png" alt="Гора Эльбрус">
         <div class="elements__caption">
           <h2 class="elements__text">Гора Эльбрус</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element3.png" alt="Домбай">
         <div class="elements__caption">
           <h2 class="elements__text">Домбай</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element2.png" alt="Гора Эльбрус">
         <div class="elements__caption">
           <h2 class="elements__text">Гора Эльбрус</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
       
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element3.png" alt="Домбай">
         <div class="elements__caption">
           <h2 class="elements__text">Домбай</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
 
-      <div class="elements__item">
+      <article class="elements__item">
         <img class="elements__photo" src="./images/element1.png" alt="Карачаевск">
         <div class="elements__caption">
           <h2 class="elements__text">Карачаевск</h2>
           <button class="elements__like button" type="button"></button>
         </div>
-      </div>
+      </article>
     </section>
   </main>
+  
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
   <div class="popup">
-    <form class="popup__container">
+    <div class="popup__container">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="popup__edit">
-        <input class="popup__input popup__input_type_name" type="text">
-        <input class="popup__input popup__input_type_description" type="text">
+      <form class="popup__edit" name="editForm">
+        <input class="popup__input popup__input_type_name" type="text" name="userName">
+        <input class="popup__input popup__input_type_description" type="text" name="userDescription">
         <button class="popup__save button" type="submit">Сохранить</button>
-      </fieldset>
-    </form>
+      </form>
+    </div>
   </div>
-  <script src="./pages/index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
