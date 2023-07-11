@@ -22,6 +22,6 @@
     grid-column: 2/3;
     grid-row: 2/3;
     margin-left: 10px;
-    background-image: url(../../../images/edit-btn-small.png);
+    background-image: url(../../../images/edit-btn-small.svg);
   }
 }
