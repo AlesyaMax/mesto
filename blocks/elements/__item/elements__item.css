@@ -5,4 +5,5 @@
   max-height: 361px;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
