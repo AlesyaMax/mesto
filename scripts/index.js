@@ -33,9 +33,9 @@ const showNewPlaceForm = function() {
 };
 
 const closeNewPlaceForm = function() {
-  popupNew.classList.remove('popup_opened');
   inputPlace.value = inputPlace.ariaPlaceholder;
-  inputLink.value = inputLink.ariaPlaceholder
+  inputLink.value = inputLink.ariaPlaceholder;
+  popupNew.classList.remove('popup_opened')
 };
 
 const changeInfo = function(evt) {
@@ -53,7 +53,6 @@ closeNewButton.addEventListener('click', closeNewPlaceForm);
 
 
 //Работа с карточками
-const createBtn = popupNew.querySelector('.popup__save');
 const initialCards = [
   {
     name: 'Трейлер',
@@ -113,8 +112,33 @@ const likePhoto = (e) => {
   el.classList.toggle('elements__like_active')
 };
 
+const popPhoto = (e) => {
+  e.target.closest('.elements__item').classList.add('elements__item_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__close').classList.add('elements__close_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__delete').classList.add('elements__delete_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__like').classList.add('elements__like_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__photo').classList.add('elements__photo_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__caption').classList.add('elements__caption_position_opened');
+  e.target.closest('.elements__item').querySelector('.elements__text').classList.add('elements__text_position_opened');
+  document.querySelector('.overlay').classList.add('overlay_position_opened')
+};
+
+const closePhoto = (e) => {
+e.target.closest('.elements__item').classList.remove('elements__item_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__close').classList.remove('elements__close_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__delete').classList.remove('elements__delete_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__like').classList.remove('elements__like_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__photo_position_opened').classList.add('elements__photo');
+e.target.closest('.elements__item').querySelector('.elements__photo_position_opened').classList.remove('elements__photo_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__caption').classList.remove('elements__caption_position_opened');
+e.target.closest('.elements__item').querySelector('.elements__text').classList.remove('elements__text_position_opened');
+document.querySelector('.overlay').classList.remove('overlay_position_opened')
+};
+
 const createCards = initialCards.forEach(function (element) {
     const card = template.cloneNode(true);
+    const photo = card.querySelector('.elements__photo');
+    const photoCloseBtn = card.querySelector('.elements__close');
     card.querySelector('.elements__text').textContent = element.name;
     card.querySelector('.elements__photo').src = element.link;
     card.querySelector('.elements__photo').alt = element.name;
@@ -122,23 +146,34 @@ const createCards = initialCards.forEach(function (element) {
     const likeButton = card.querySelector('.elements__like');
     deleteButton.addEventListener('click', deleteCard);
     likeButton.addEventListener('click', likePhoto);
+    photo.addEventListener('click', popPhoto);
+    photoCloseBtn.addEventListener('click', closePhoto);
     elements.prepend(card) 
   });
+
+const overlay = document.querySelector('.overlay');
 
 const addNewCards = (evt) => {
     evt.preventDefault();
     const card = template.cloneNode(true);
-    card.querySelector('.elements__text').textContent = inputPlace.value;
-    card.querySelector('.elements__photo').src = inputLink.value;
-    card.querySelector('.elements__photo').alt = inputPlace.value;
+    const photoCloseBtn = card.querySelector('.elements__close');
+    const photo = card.querySelector('.elements__photo');
     const deleteButton = card.querySelector('.elements__delete');
     const likeButton = card.querySelector('.elements__like');
+    card.querySelector('.elements__text').textContent = inputPlace.value;
+    photo.src = inputLink.value;
+    photo.alt = inputPlace.value;
     deleteButton.addEventListener('click', deleteCard);
     likeButton.addEventListener('click', likePhoto);
-    elements.prepend(card) 
-    closeNewPlaceForm();
+    photo.addEventListener('click', popPhoto);
+    photoCloseBtn.addEventListener('click', closePhoto);
+    elements.prepend(card);
+    closeNewPlaceForm()
 };
 
- createBtn.addEventListener('click', addNewCards);
+const createForm = document.querySelector('.popup__add');
+createForm.addEventListener('submit', addNewCards);
+
+
 
 

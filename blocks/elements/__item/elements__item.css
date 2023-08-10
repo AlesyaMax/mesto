@@ -7,3 +7,19 @@
   flex-wrap: wrap;
   position: relative;
 }
+
+.elements__item_position_opened {
+  margin: 0 0;
+  padding: 0 0;
+  max-width: 75vw;
+  max-height: 75vh;
+  position: fixed;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  animation: appear 0.3s forwards;
+}
+

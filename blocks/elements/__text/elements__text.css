@@ -10,3 +10,13 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.elements__text_position_opened {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 75vw;
+  width: min-content;
+}

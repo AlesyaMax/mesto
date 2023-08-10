@@ -12,8 +12,14 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 1;
 }
 
 .elements__delete:hover {
   opacity: 0.6;
+}
+
+.elements__delete_position_opened {
+  display: none;
+  z-index: 0;
 }
