@@ -9,12 +9,3 @@
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
 }
-
-.elements__caption_position_opened {
-  padding: 10px 0 0 0;
-  border-radius: 0;
-  z-index: 3;
-  color: #fff;
-  background-color: transparent;
-  width: min-content;
-}

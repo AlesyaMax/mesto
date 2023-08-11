@@ -1,4 +1,4 @@
-.elements__close {
+.popup-photo__close {
   margin: 0 0;
   padding: 0 0;
   position: absolute;
@@ -11,23 +11,18 @@
   box-shadow: none;
   background-image: url(../../../images/Close\ Icon-big.svg);
   background-repeat: no-repeat;
-  display: none;
 }
 
-.elements__close:hover {
+.popup-photo__close:hover {
   opacity: 0.6;
 }
 
 @media (max-width: 600px) {
-  .elements__close {
+  .popup-photo__close {
     width: 20px;
     height: 20px;
     top: -36px;
     right: 0;
     background-image: url(../../../images/Close\ Icon-small.svg);
   }
-}
-
-.elements__close_position_opened {
-  display: block;
 }
