@@ -25,6 +25,7 @@
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
+
   <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close button" type="button"></button>
@@ -36,20 +37,28 @@
       </form>
     </div>
   </div>
+
   <div class="popup popup_add-place">
     <div class="popup__container">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__add popup__form" name="newForm">
-        <input class="popup__input popup__input_type_place" type="text" name="photoName" placeholder="Название">
-        <input class="popup__input popup__input_type_source" type="text" name="photoSource" placeholder="Ссылка на картинку">
+        <input class="popup__input popup__input_type_place" type="text" name="photoName" placeholder="Название" required>
+        <input class="popup__input popup__input_type_source" type="url" name="photoSource" placeholder="Ссылка на картинку" required>
         <button class="popup__save button" type="submit">Создать</button>
       </form>
     </div>
   </div>
 
+  <div class="popup popup_card">
+      <figure class="popup__figure">
+        <button class="popup__close button" type="button"></button>
+        <img class="popup__photo">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+  </div>
+  
   <template class="card-template">
-    <div class="card">
       <article class="elements__item">
         <button class="elements__delete button"></button>
         <img class="elements__photo">
@@ -58,17 +67,6 @@
           <button class="elements__like button" type="button"></button>
         </div>
       </article>
-      <article class="popup-photo">
-        <div class="popup-photo__overlay"></div>
-        <div class="popup-photo__item">
-          <button class="popup-photo__close button" type="button"></button>
-          <figure class="popup-photo__figure">
-            <img class="popup-photo__photo">
-            <figcaption class="popup-photo__caption"></figcaption>
-          </figure>
-        </div>
-      </article>
-    </div>
   </template>
   <script src="./scripts/index.js"></script>
 </body>
