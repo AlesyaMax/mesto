@@ -62,7 +62,7 @@ const handleLikeClick = (e) => {
 };
 
 const handleClickPhoto = (e) => {
-e.target.closest('.card').querySelector('.popup-photo').classList.toggle('popup-photo_opened')
+  e.target.closest('.card').querySelector('.popup-photo').classList.toggle('popup-photo_opened')
 };
 
 const openCardPopup = (evt) => {
@@ -88,8 +88,8 @@ function createCard(cardData) {
 };
 
 function renderCard(cardData) {
-const newCard = createCard(cardData);
-cardsContainer.prepend(newCard)
+  const newCard = createCard(cardData);
+  cardsContainer.prepend(newCard)
 };
 
 const createInitialCards = initialCards.forEach(function (element) {
