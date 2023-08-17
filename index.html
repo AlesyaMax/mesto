@@ -32,9 +32,9 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form popup__edit" name="editForm" novalidate>
         <input class="popup__input popup__input_type_name" type="text" name="userName" id="userName" minlength="2" maxlength="40">
-        <span id="userName-error" class="popup__error_visible"></span>
+        <span id="userName-error" class="popup__error popup__error_visible"></span>
         <input class="popup__input popup__input_type_description" type="text" name="userDescription" id="userDescription" minlength="20" maxlength="200">
-        <span id="userDescription-error" class=" popup__error_visible"></span>
+        <span id="userDescription-error" class="popup__error popup__error_visible"></span>
         <button class="popup__save button" disabled type="submit">Сохранить</button>
       </form>
     </div>
@@ -46,9 +46,9 @@
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__add popup__form" name="newForm" novalidate>
         <input class="popup__input popup__input_type_place" type="text" name="photoName" id="photoName" placeholder="Название" minlength="2" maxlength="30">
-        <span id="photoName-error" class="popup__error_visible"></span>
+        <span id="photoName-error" class="popup__error popup__error_visible"></span>
         <input class="popup__input popup__input_type_source" type="url" name="photoSource" id="photoSource" placeholder="Ссылка на картинку">
-        <span id="photoSource-error" class="popup__error_visible"></span>
+        <span id="photoSource-error" class="popup__error popup__error_visible"></span>
         <button class="popup__save button" disabled type="submit">Создать</button>
       </form>
     </div>
