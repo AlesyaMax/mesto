@@ -6,9 +6,7 @@ const closeProfileButton = popupProfile.querySelector(".popup__close");
 const cardsContainer = document.querySelector(".elements");
 
 const inputName = popupProfileForm.querySelector(".popup__input_type_name");
-const inputDescription = popupProfileForm.querySelector(
-  ".popup__input_type_description"
-);
+const inputDescription = popupProfileForm.querySelector(".popup__input_type_description");
 const inputPlace = document.querySelector(".popup__input_type_place");
 const inputLink = document.querySelector(".popup__input_type_source");
 const profileName = document.querySelector(".profile__name");
@@ -24,9 +22,7 @@ const popupPhoto = popupCard.querySelector(".popup__photo");
 const popupPhotoCaption = popupCard.querySelector(".popup__caption");
 const popupCardCloseButton = popupCard.querySelector(".popup__close");
 
-const template = document
-  .querySelector(".card-template")
-  .content.querySelector(".elements__item");
+const template = document.querySelector(".card-template").content.querySelector(".elements__item");
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -66,10 +62,7 @@ const handleLikeClick = (e) => {
 };
 
 const handleClickPhoto = (e) => {
-  e.target
-    .closest(".card")
-    .querySelector(".popup-photo")
-    .classList.toggle("popup-photo_opened");
+  e.target.closest(".card").querySelector(".popup-photo").classList.toggle("popup-photo_opened");
 };
 
 const openCardPopup = (evt) => {
@@ -114,6 +107,31 @@ const handleSubmitNewPlaceForm = (evt) => {
   closePopup(popupNew);
 };
 
+const closePopupByClickingOnOverlay = (popup) => {
+  popup.addEventListener('click', function(evt) {
+    if (evt.target == evt.currentTarget) {
+      closePopup(popup);
+    }
+  });
+}
+
+const closePopupByPressingESC = (popup) => {
+  document.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+}
+
+const setEventListenersOnPopups = () => {
+const popupList = Array.from(document.querySelectorAll('.popup'));
+  popupList.forEach(function(popupElement) {
+    closePopupByClickingOnOverlay(popupElement);
+    closePopupByPressingESC(popupElement);
+  })
+};
+
+setEventListenersOnPopups();
 editButton.addEventListener("click", showProfileForm);
 closeProfileButton.addEventListener("click", () => closePopup(popupProfile));
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
