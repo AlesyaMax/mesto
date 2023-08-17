@@ -1,5 +1,5 @@
 .popup__save {
-  margin: 48px 0 0 0;
+  margin: 31px 0 0 0;
   padding: 0 0;
   border: none;
   border-radius: 2px;
@@ -25,4 +25,10 @@
     line-height: 16.94px;
     height: 46px;
   } 
+}
+
+.popup__save:disabled {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
