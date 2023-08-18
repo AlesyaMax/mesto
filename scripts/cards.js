@@ -42,5 +42,9 @@ const initialCards = [
   {
     name: 'В Ад и обратно',
     link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/d82c34e5-136a-4310-8501-23fa65d2c6f6_600.jpg'
+  },
+  {
+    name: 'Serpens Catus',
+    link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/6b98e0a0-351b-4d97-a1cb-931c42a87c87_600.jpg'
   }
 ];
