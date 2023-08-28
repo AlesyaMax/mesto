@@ -1,3 +1,7 @@
+import  {initialCards} from './cards.js';
+import {selectors, Card} from './Card.js';
+
+
 const popupProfileForm = document.querySelector(".popup__edit");
 const popupProfile = document.querySelector(".popup_edit-profile");
 const editButton = document.querySelector(".profile__edit");
@@ -20,7 +24,7 @@ const popupPhotoCaption = popupCard.querySelector(".popup__caption");
 
 const template = document.querySelector(".card-template").content.querySelector(".elements__item");
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener('keydown', closeByEscape);
 }
@@ -54,7 +58,7 @@ const handleSubmitProfileForm = function (evt) {
   closePopup(popupProfile);
 };
 
-const handleDeleteClick = (e) => {
+/*const handleDeleteClick = (e) => {
   const el = e.target.closest(".elements__item");
   el.remove();
 };
@@ -102,7 +106,7 @@ const createInitialCards = initialCards.forEach(function (element) {
 const createNewCards = () => {
   const cardData = { name: inputPlace.value, link: inputLink.value };
   renderCard(cardData);
-};
+};*/
 
 const handleSubmitNewPlaceForm = (evt) => {
   evt.preventDefault();
@@ -135,3 +139,16 @@ editButton.addEventListener("click", showProfileForm);
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
 addButton.addEventListener("click", showNewPlaceForm);
 popupNewPlaceForm.addEventListener("submit", handleSubmitNewPlaceForm);
+
+
+//
+
+initialCards.forEach((item) => {
+  const newInitialCard = new Card (item.name, item.link, selectors);
+  newInitialCard.renderCard();
+});
+
+const createNewCards = () => {
+  const newInputCard = new Card (inputPlace.value, inputLink.value, selectors);
+  newInputCard.renderCard();
+}

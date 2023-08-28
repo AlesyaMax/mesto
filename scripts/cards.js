@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Трейлер',
     link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/33b2ce28-f3f7-4a94-a5aa-fdb38e4a4842_600.jpg'
