@@ -46,5 +46,13 @@ export const initialCards = [
   {
     name: 'Serpens Catus',
     link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/6b98e0a0-351b-4d97-a1cb-931c42a87c87_600.jpg'
+  },
+  {
+    name: 'Гора Орохена',
+    link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/db9f51c1-2446-499e-994d-b9ed8e762c6d_600.jpg'
+  },
+  {
+    name: 'Писатель',
+    link: 'https://mavecloud.s3mts.ru/storage/podcasts/27c24380-6b67-4f17-9109-78c33728cdcc/images/059c28cc-3c86-4b62-b26b-7f9cc4fb900f_600.jpg'
   }
 ];
