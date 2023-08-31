@@ -7,35 +7,35 @@ const selectors = {
   templateText: '.elements__text',
   templateDeleteButton: '.elements__delete',
   templateLikeButton: '.elements__like',
-  cardsContainer: '.elements'
+  likeIsActive: 'elements__like_active',
+  cardsContainer: '.elements',
+  popupCardSelector: '.popup_card',
+  popupPhotoSelector: '.popup__photo',
+  popupPhotoCaptionSelector: '.popup__caption'
 };
 
 class Card {
   constructor(name, link, templateData) {
-    this._template = document.querySelector(templateData.templateSelector).content.querySelector(templateData.templateElement);
     this._templateData = templateData;
+    this._template = document.querySelector(this._templateData.templateSelector).content.querySelector(this._templateData.templateElement);
     this._name = name;
     this._link = link;
   }
 
   _handleDeleteClick(e) {
-    const el = e.target.closest(".elements__item");
+    const el = e.target.parentNode;
     el.remove();
   };
   
   _handleLikeClick(e) {
-    const el = e.target.closest(".elements__like");
-    el.classList.toggle("elements__like_active");
-  };
-  
-  _handleClickPhoto = (e) => {
-    e.target.closest(".card").querySelector(".popup-photo").classList.toggle("popup-photo_opened");
+    const el = e.target;
+    el.classList.toggle(selectors.likeIsActive);
   };
 
   _openCardPopup(e) {
-    const popupCard = document.querySelector(".popup_card");
-    const popupPhoto = popupCard.querySelector(".popup__photo");
-    const popupPhotoCaption = popupCard.querySelector(".popup__caption"); 
+    const popupCard = document.querySelector(selectors.popupCardSelector);
+    const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
+    const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector); 
     popupPhoto.src = e.target.src;
     popupPhoto.alt = e.target.alt;
     popupPhotoCaption.textContent = e.target.alt;

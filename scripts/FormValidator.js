@@ -14,22 +14,19 @@ class FormValidator {
   }
 
   _showError() {
-    const formInValidation = this._element.closest(this._classSettings.formSelector);
-    const errorInput = formInValidation.querySelector(`#${this._element.id}-error`);
+    const errorInput = this._element.parentNode.querySelector(`#${this._element.id}-error`);
     this._element.classList.add(this._classSettings.inputErrorClass);
     errorInput.textContent = this._element.validationMessage;
   }
   
   _hideError() {
-    const formInValidation = this._element.closest(this._classSettings.formSelector);
-    const errorInput = formInValidation.querySelector(`#${this._element.id}-error`);
+    const errorInput = this._element.parentNode.querySelector(`#${this._element.id}-error`);
     this._element.classList.remove(this._classSettings.inputErrorClass);
     errorInput.textContent = '';
   }
 
   _hasInvalidInput() {
-    const formInValidation = this._element.closest(this._classSettings.formSelector);
-    const inputList = Array.from(formInValidation.querySelectorAll(this._input));
+    const inputList = Array.from(this._element.parentNode.querySelectorAll(this._input));
     return inputList.some(function(input) {
       return !input.validity.valid;
     });
@@ -44,8 +41,7 @@ class FormValidator {
   }
 
   _toggleButtonState() {
-    const formInValidation = this._element.closest(this._classSettings.formSelector);
-    const button = formInValidation.querySelector(this._classSettings.submitButtonSelector);
+    const button = this._element.parentNode.querySelector(this._classSettings.submitButtonSelector);
     if (this._hasInvalidInput()) {
       button.classList.add(this._classSettings.inactiveButtonClass);
       button.disabled = true;
