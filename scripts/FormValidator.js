@@ -1,16 +1,12 @@
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__input_type_error',
-};
+import { settings } from "./constants.js"
 
 class FormValidator {
   constructor(classSettings, elementToValidate) {
     this._classSettings = classSettings;
     this._element = elementToValidate;
-    this._input = classSettings.inputSelector;
+    this._inputSelector = classSettings.inputSelector;
+    this._inputList = Array.from(this._element.parentNode.querySelectorAll(this._inputSelector));
+    this._button = this._element.parentNode.querySelector(this._classSettings.submitButtonSelector);
   }
 
   _showError() {
@@ -26,8 +22,7 @@ class FormValidator {
   }
 
   _hasInvalidInput() {
-    const inputList = Array.from(this._element.parentNode.querySelectorAll(this._input));
-    return inputList.some(function(input) {
+    return this._inputList.some(function(input) {
       return !input.validity.valid;
     });
   }
@@ -41,19 +36,17 @@ class FormValidator {
   }
 
   _toggleButtonState() {
-    const button = this._element.parentNode.querySelector(this._classSettings.submitButtonSelector);
     if (this._hasInvalidInput()) {
-      button.classList.add(this._classSettings.inactiveButtonClass);
-      button.disabled = true;
+      this._button.classList.add(this._classSettings.inactiveButtonClass);
+      this._button.disabled = true;
     } else {
-      button.classList.remove(this._classSettings.inactiveButtonClass);
-      button.disabled = false;
+      this._button.classList.remove(this._classSettings.inactiveButtonClass);
+      this._button.disabled = false;
     };
   };
 
   _setEventListeners() {
-    const inputList = Array.from(this._element.querySelectorAll(this._input));
-    inputList.forEach(function(input) {
+    this._inputList.forEach(function(input) {
       input.required = true;
       const inputToValidate = new FormValidator (settings, input);
       inputToValidate._toggleButtonState();
@@ -65,8 +58,7 @@ class FormValidator {
   };
 
   enableValidation() {
-    const form = this._element;
-    form.addEventListener('submit', function(e) {
+    this._element.addEventListener('submit', function(e) {
       e.preventDefault();
     });
     this._setEventListeners();
@@ -74,5 +66,4 @@ class FormValidator {
 
 }
 
-
-export {settings, FormValidator}
+export {FormValidator}

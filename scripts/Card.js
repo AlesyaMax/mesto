@@ -1,18 +1,6 @@
 import { openPopup } from "./index.js";
+import { selectors } from "./constants.js";
 
-const selectors = {
-  templateSelector: '.card-template',
-  templateElement: '.elements__item',
-  templatePhoto: '.elements__photo',
-  templateText: '.elements__text',
-  templateDeleteButton: '.elements__delete',
-  templateLikeButton: '.elements__like',
-  likeIsActive: 'elements__like_active',
-  cardsContainer: '.elements',
-  popupCardSelector: '.popup_card',
-  popupPhotoSelector: '.popup__photo',
-  popupPhotoCaptionSelector: '.popup__caption'
-};
 
 class Card {
   constructor(name, link, templateData) {
@@ -22,14 +10,14 @@ class Card {
     this._link = link;
   }
 
-  _handleDeleteClick(e) {
-    const el = e.target.parentNode;
+  _handleDeleteClick() {
+    const el = this.closest(selectors.templateElement);
     el.remove();
   };
-  
-  _handleLikeClick(e) {
-    const el = e.target;
-    el.classList.toggle(selectors.likeIsActive);
+
+
+  _handleLikeClick() {
+    this.classList.toggle(selectors.likeIsActive);
   };
 
   _openCardPopup(e) {
@@ -42,7 +30,7 @@ class Card {
     openPopup(popupCard);
   };
 
-  _createCard() {
+  createCard() {
     const card = this._template.cloneNode(true);
     const photo = card.querySelector(this._templateData.templatePhoto);
     const caption = card.querySelector(this._templateData.templateText);
@@ -56,12 +44,6 @@ class Card {
     photo.addEventListener("click", this._openCardPopup);
     return card;
   }
-  
-  renderCard() {
-    const newCard = this._createCard();
-    const cardsContainer = document.querySelector(this._templateData.cardsContainer);
-    cardsContainer.prepend(newCard);
-  }
 }
 
-export {selectors, Card};
+export {Card};

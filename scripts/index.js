@@ -1,11 +1,12 @@
 import  { initialCards } from './cards.js';
-import { selectors, Card } from './Card.js';
-import { settings, FormValidator } from './FormValidator.js';
+import { selectors, settings } from "./constants.js";
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 
 const popupProfileForm = document.querySelector(".popup__edit");
 const popupProfile = document.querySelector(".popup_edit-profile");
-const editButton = document.querySelector(".profile__edit");
+const buttonEditProfile = document.querySelector(".profile__edit");
 
 const inputName = popupProfileForm.querySelector(".popup__input_type_name");
 const inputDescription = popupProfileForm.querySelector(".popup__input_type_description");
@@ -15,7 +16,7 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 const popupNew = document.querySelector(".popup_add-place");
-const addButton = document.querySelector(".profile__add");
+const buttonAddPlace = document.querySelector(".profile__add");
 const popupNewPlaceForm = popupNew.querySelector(".popup__add");
 
 export function openPopup(popup) {
@@ -72,20 +73,26 @@ const closeByCloseButtonOrOverlay = (popup) => {
 }
 
 const setEventListenersOnPopups = () => {
-const popupList = Array.from(document.querySelectorAll('.popup'));
+  const popupList = Array.from(document.querySelectorAll('.popup'));
   popupList.forEach(function(popupElement) {
     closeByCloseButtonOrOverlay(popupElement);
   })
 };
 
+const renderCard = (card) => {
+  const newCard = card.createCard();
+  const cardsContainer = document.querySelector(selectors.cardsContainer);
+  cardsContainer.prepend(newCard);
+}
+
 initialCards.forEach((item) => {
   const newInitialCard = new Card (item.name, item.link, selectors);
-  newInitialCard.renderCard();
+  renderCard(newInitialCard);
 });
 
 const createNewCards = () => {
   const newInputCard = new Card (inputPlace.value, inputLink.value, selectors);
-  newInputCard.renderCard();
+  renderCard(newInputCard);
 }
 
 const formList = Array.from(document.querySelectorAll(settings.formSelector));
@@ -95,7 +102,7 @@ formList.forEach((form) => {
 })
 
 setEventListenersOnPopups();
-editButton.addEventListener("click", showProfileForm);
+buttonEditProfile.addEventListener("click", showProfileForm);
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
-addButton.addEventListener("click", showNewPlaceForm);
+buttonAddPlace.addEventListener("click", showNewPlaceForm);
 popupNewPlaceForm.addEventListener("submit", handleSubmitNewPlaceForm);
