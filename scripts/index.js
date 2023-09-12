@@ -55,11 +55,10 @@ const handleSubmitProfileForm = function (evt) {
 
 const handleSubmitNewPlaceForm = (evt) => {
   evt.preventDefault();
-  createNewCards();
+  createInputCard();
   closePopup(popupNew);
   popupNewPlaceForm.reset();
   const submitPlaceButton = popupNewPlaceForm.querySelector(settings.submitButtonSelector);
-  submitPlaceButton.disabled = true;
   submitPlaceButton.classList.add(settings.inactiveButtonClass)
 };
 
@@ -85,15 +84,18 @@ const renderCard = (card) => {
   cardsContainer.prepend(newCard);
 }
 
-initialCards.forEach((item) => {
-  const newInitialCard = new Card (item.name, item.link, selectors);
+const createNewCard = (cardName, cardLink, cardData) => {
+  const newInitialCard = new Card (cardName, cardLink, cardData);
   renderCard(newInitialCard);
+}
+
+initialCards.forEach((item) => {
+  createNewCard(item.name, item.link, selectors)
 });
 
-const createNewCards = () => {
-  const newInputCard = new Card (inputPlace.value, inputLink.value, selectors);
-  renderCard(newInputCard);
-}
+const createInputCard = () => {
+  createNewCard(inputPlace.value, inputLink.value, selectors)
+};
 
 const formList = Array.from(document.querySelectorAll(settings.formSelector));
 formList.forEach((form) => {

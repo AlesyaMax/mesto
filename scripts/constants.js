@@ -19,3 +19,7 @@ export const settings = {
   inactiveButtonClass: 'popup__save_disabled',
   inputErrorClass: 'popup__input_type_error',
 };
+
+export const popupCard = document.querySelector(selectors.popupCardSelector);
+export const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
+export const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector);

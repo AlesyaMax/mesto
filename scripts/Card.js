@@ -1,5 +1,5 @@
 import { openPopup } from "./index.js";
-import { selectors } from "./constants.js";
+import { selectors, popupCard, popupPhoto, popupPhotoCaption } from "./constants.js";
 
 
 class Card {
@@ -20,13 +20,10 @@ class Card {
     this.classList.toggle(selectors.likeIsActive);
   };
 
-  _openCardPopup(e) {
-    const popupCard = document.querySelector(selectors.popupCardSelector);
-    const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
-    const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector); 
-    popupPhoto.src = e.target.src;
-    popupPhoto.alt = e.target.alt;
-    popupPhotoCaption.textContent = e.target.alt;
+  _openCardPopup() {
+    popupPhoto.src = this.src;
+    popupPhoto.alt = this.alt;
+    popupPhotoCaption.textContent = this.alt;
     openPopup(popupCard);
   };
 
