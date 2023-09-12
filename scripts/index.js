@@ -58,8 +58,6 @@ const handleSubmitNewPlaceForm = (evt) => {
   createInputCard();
   closePopup(popupNew);
   popupNewPlaceForm.reset();
-  const submitPlaceButton = popupNewPlaceForm.querySelector(settings.submitButtonSelector);
-  submitPlaceButton.classList.add(settings.inactiveButtonClass)
 };
 
 const closeByCloseButtonOrOverlay = (popup) => {
@@ -98,6 +96,7 @@ const createInputCard = () => {
 };
 
 const formList = Array.from(document.querySelectorAll(settings.formSelector));
+
 formList.forEach((form) => {
   const formToValidate = new FormValidator (settings, form);
   formToValidate.enableValidation();
