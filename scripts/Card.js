@@ -10,12 +10,6 @@ class Card {
     this._link = link;
   }
 
-  _handleDeleteClick() {
-    const el = this.closest(selectors.templateElement);
-    el.remove();
-  };
-
-
   _handleLikeClick() {
     this.classList.toggle(selectors.likeIsActive);
   };
@@ -28,18 +22,18 @@ class Card {
   };
 
   createCard() {
-    const card = this._template.cloneNode(true);
-    const photo = card.querySelector(this._templateData.templatePhoto);
-    const caption = card.querySelector(this._templateData.templateText);
-    const deleteButton = card.querySelector(this._templateData.templateDeleteButton);
-    const likeButton = card.querySelector(this._templateData.templateLikeButton);
+    this._card = this._template.cloneNode(true);
+    const photo = this._card.querySelector(this._templateData.templatePhoto);
+    const caption = this._card.querySelector(this._templateData.templateText);
+    const deleteButton = this._card.querySelector(this._templateData.templateDeleteButton);
+    const likeButton = this._card.querySelector(this._templateData.templateLikeButton);
     photo.alt = this._name;
     photo.src = this._link;
     caption.textContent = this._name;
-    deleteButton.addEventListener("click", this._handleDeleteClick);
+    deleteButton.addEventListener("click", () => this._card.remove());
     likeButton.addEventListener("click", this._handleLikeClick);
     photo.addEventListener("click", this._openCardPopup);
-    return card;
+    return this._card;
   }
 }
 

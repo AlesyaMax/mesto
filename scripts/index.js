@@ -77,14 +77,14 @@ const setEventListenersOnPopups = () => {
 };
 
 const renderCard = (card) => {
-  const newCard = card.createCard();
   const cardsContainer = document.querySelector(selectors.cardsContainer);
-  cardsContainer.prepend(newCard);
+  cardsContainer.prepend(card);
 }
 
 const createNewCard = (cardName, cardLink, cardData) => {
-  const newInitialCard = new Card (cardName, cardLink, cardData);
-  renderCard(newInitialCard);
+  const newCardObject = new Card (cardName, cardLink, cardData);
+  const newCard = newCardObject.createCard();
+  renderCard(newCard);
 }
 
 initialCards.forEach((item) => {
