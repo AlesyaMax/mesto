@@ -21,6 +21,11 @@ class Card {
     openPopup(popupCard);
   };
 
+  _removeCard() {
+    this._card.remove();
+    this._card = null;
+  }
+
   createCard() {
     this._card = this._template.cloneNode(true);
     const photo = this._card.querySelector(this._templateData.templatePhoto);
@@ -30,7 +35,7 @@ class Card {
     photo.alt = this._name;
     photo.src = this._link;
     caption.textContent = this._name;
-    deleteButton.addEventListener("click", () => this._card.remove());
+    deleteButton.addEventListener("click", () => this._removeCard());
     likeButton.addEventListener("click", this._handleLikeClick);
     photo.addEventListener("click", this._openCardPopup);
     return this._card;

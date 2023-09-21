@@ -84,16 +84,18 @@ const renderCard = (card) => {
 const createNewCard = (cardName, cardLink, cardData) => {
   const newCardObject = new Card (cardName, cardLink, cardData);
   const newCard = newCardObject.createCard();
-  renderCard(newCard);
+  return newCard;
 }
 
 initialCards.forEach((item) => {
-  createNewCard(item.name, item.link, selectors)
-});
+  const newInitialCard = createNewCard(item.name, item.link, selectors);
+  renderCard(newInitialCard);
+})
 
 const createInputCard = () => {
-  createNewCard(inputPlace.value, inputLink.value, selectors)
-};
+  const newInputCard = createNewCard(inputPlace.value, inputLink.value, selectors);
+  renderCard(newInputCard);
+}
 
 const formList = Array.from(document.querySelectorAll(settings.formSelector));
 

@@ -1,0 +1,22 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "### Обзор",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlesyaMax/mesto.git"
+  },
+  "author": "Alesya Maximenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlesyaMax/mesto/issues"
+  },
+  "homepage": "https://github.com/AlesyaMax/mesto#readme",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}
