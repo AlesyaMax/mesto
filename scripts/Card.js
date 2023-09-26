@@ -1,24 +1,17 @@
-import { openPopup } from "./index.js";
-import { selectors, popupCard, popupPhoto, popupPhotoCaption } from "./constants.js";
+import { selectors } from "./constants.js";
 
 
 class Card {
-  constructor(name, link, templateData) {
+  constructor({name, link, handleCardClick},templateData) {
     this._templateData = templateData;
     this._template = document.querySelector(this._templateData.templateSelector).content.querySelector(this._templateData.templateElement);
     this._name = name;
     this._link = link;
+    this._handleCardClick = handleCardClick;
   }
 
   _handleLikeClick() {
     this.classList.toggle(selectors.likeIsActive);
-  };
-
-  _openCardPopup() {
-    popupPhoto.src = this.src;
-    popupPhoto.alt = this.alt;
-    popupPhotoCaption.textContent = this.alt;
-    openPopup(popupCard);
   };
 
   _removeCard() {
@@ -37,7 +30,7 @@ class Card {
     caption.textContent = this._name;
     deleteButton.addEventListener("click", () => this._removeCard());
     likeButton.addEventListener("click", this._handleLikeClick);
-    photo.addEventListener("click", this._openCardPopup);
+    photo.addEventListener("click", () => this._handleCardClick(this._name, this._link));
     return this._card;
   }
 }

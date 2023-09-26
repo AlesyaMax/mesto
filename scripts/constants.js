@@ -7,7 +7,7 @@ export const selectors = {
   templateLikeButton: '.elements__like',
   likeIsActive: 'elements__like_active',
   cardsContainer: '.elements',
-  popupCardSelector: '.popup_card',
+  popupCardSelector: 'popup_card',
   popupPhotoSelector: '.popup__photo',
   popupPhotoCaptionSelector: '.popup__caption'
 };
@@ -20,6 +20,6 @@ export const settings = {
   inputErrorClass: 'popup__input_type_error',
 };
 
-export const popupCard = document.querySelector(selectors.popupCardSelector);
-export const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
-export const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector);
+//export const popupCard = document.querySelector(selectors.popupCardSelector);
+//export const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
+//export const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector);

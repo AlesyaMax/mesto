@@ -21,11 +21,6 @@ const popupNew = document.querySelector(".popup_add-place");
 const buttonAddPlace = document.querySelector(".profile__add");
 const popupNewPlaceForm = popupNew.querySelector(".popup__add");
 
-export function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener('keydown', closeByEscape);
-}
-
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', closeByEscape);
@@ -62,29 +57,19 @@ const handleSubmitNewPlaceForm = (evt) => {
   popupNewPlaceForm.reset();
 };
 
-const closeByCloseButtonOrOverlay = (popup) => {
-  popup.addEventListener('mousedown', function(evt) {
-    if (evt.target.classList.contains('popup_opened') 
-    || evt.target.classList.contains('popup__close')) {
-      closePopup(popup);
-    }
-  });
-}
-
-const setEventListenersOnPopups = () => {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
+const popupList = Array.from(document.querySelectorAll('.popup'));
   popupList.forEach(function(popupElement) {
-    closeByCloseButtonOrOverlay(popupElement);
+    const popupClass = new Popup(popupElement.id);
+    popupClass.setEventListenersOnPopups();
   })
-};
 
 const renderCard = (card) => {
   const cardsContainer = document.querySelector(selectors.cardsContainer);
   cardsContainer.prepend(card);
 }
 
-const createNewCard = (cardName, cardLink, cardData) => {
-  const newCardObject = new Card (cardName, cardLink, cardData);
+const createNewCard = (cardName, cardLink, cardData, handleCardClick) => {
+  const newCardObject = new Card (cardName, cardLink, cardData, handleCardClick);
   const newCard = newCardObject.createCard();
   return newCard;
 }
@@ -92,7 +77,13 @@ const createNewCard = (cardName, cardLink, cardData) => {
 const initialCardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const newInitialCard = createNewCard(item.name, item.link, selectors);
+    const newInitialCard = createNewCard({
+      name: item.name, 
+      link: item.link,
+      handleCardClick: (name, link) => {const popupCard = new PopupWithImage(selectors.popupCardSelector);
+      popupCard.openPopup(name, link);}
+      }, 
+      selectors);
     initialCardList.addItem(newInitialCard);
   }
   },
@@ -101,13 +92,14 @@ const initialCardList = new Section({
 
 initialCardList.renderItem();
 
-/*initialCards.forEach((item) => {
-  const newInitialCard = createNewCard(item.name, item.link, selectors);
-  renderCard(newInitialCard);
-})*/
-
 const createInputCard = () => {
-  const newInputCard = createNewCard(inputPlace.value, inputLink.value, selectors);
+  const newInputCard = createNewCard({
+    name: inputPlace.value, 
+    link: inputLink.value,
+    handleCardClick: (name, link) => {const popupCard = new PopupWithImage(selectors.popupCardSelector);
+      popupCard.openPopup(name, link);}
+      }, 
+      selectors);
   renderCard(newInputCard);
 }
 
@@ -118,7 +110,6 @@ formList.forEach((form) => {
   formToValidate.enableValidation();
 })
 
-setEventListenersOnPopups();
 buttonEditProfile.addEventListener("click", showProfileForm);
 popupProfileForm.addEventListener("submit", handleSubmitProfileForm);
 buttonAddPlace.addEventListener("click", showNewPlaceForm);
