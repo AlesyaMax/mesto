@@ -2,7 +2,9 @@ import  { initialCards } from './cards.js';
 import { selectors, settings } from "./constants.js";
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-
+import Section from './Section.js';
+import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
 
 const popupProfileForm = document.querySelector(".popup__edit");
 const popupProfile = document.querySelector(".popup_edit-profile");
@@ -87,10 +89,22 @@ const createNewCard = (cardName, cardLink, cardData) => {
   return newCard;
 }
 
-initialCards.forEach((item) => {
+const initialCardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const newInitialCard = createNewCard(item.name, item.link, selectors);
+    initialCardList.addItem(newInitialCard);
+  }
+  },
+  selectors.cardsContainer
+);
+
+initialCardList.renderItem();
+
+/*initialCards.forEach((item) => {
   const newInitialCard = createNewCard(item.name, item.link, selectors);
   renderCard(newInitialCard);
-})
+})*/
 
 const createInputCard = () => {
   const newInputCard = createNewCard(inputPlace.value, inputLink.value, selectors);
