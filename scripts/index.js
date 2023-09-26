@@ -2,28 +2,29 @@ import  { initialCards } from './cards.js';
 import { 
   cardTemplateSelectors, 
   formSelectors,
+  profileSelectors,
   buttonEditProfile,
   buttonAddPlace,
   inputName,
-  inputDescription,
-  profileName,
-  profileDescription 
+  inputDescription
 } from "./constants.js";
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
+
+const userInfo = new UserInfo(profileSelectors.nameSelector, profileSelectors.descriptionSelector);
 
 const popupProfileForm = new PopupWithForm(formSelectors.profileFormSelector, {
-  handleSubmitForm: (dataSet) => {
-    profileName.textContent = dataSet.userName;
-    profileDescription.textContent = dataSet.userDescription;
+  handleSubmitForm: () => {
+    userInfo.setUserInfo();
     popupProfileForm.closePopup();
   }
 });
 
-const popupPlaceForm = new PopupWithForm(formSelectors.placeFormSelector, {
+const popupNewPlaceForm = new PopupWithForm(formSelectors.placeFormSelector, {
   handleSubmitForm: (dataSet) => {
     const newInputCard = createNewCard({
       name: dataSet.photoName, 
@@ -34,21 +35,19 @@ const popupPlaceForm = new PopupWithForm(formSelectors.placeFormSelector, {
         }, 
         cardTemplateSelectors);
     renderCard(newInputCard);
-    popupPlaceForm.closePopup();
+    popupNewPlaceForm.closePopup();
   }
 })
 
-popupProfileForm.setEventListeners();
-popupPlaceForm.setEventListeners();
-
 const showProfileForm = () => {
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileDescription.textContent;
+  const profileInfo = userInfo.getUserInfo();
+  inputName.value = profileInfo.name;
+  inputDescription.value = profileInfo.description;
   popupProfileForm.openPopup();
 };
 
 const showNewPlaceForm = () => {
-  popupPlaceForm.openPopup();
+  popupNewPlaceForm.openPopup();
 };
 
 const renderCard = (card) => {
@@ -88,5 +87,7 @@ formList.forEach((form) => {
   formToValidate.enableValidation();
 })
 
+popupProfileForm.setEventListeners();
+popupNewPlaceForm.setEventListeners();
 buttonEditProfile.addEventListener("click", showProfileForm);
 buttonAddPlace.addEventListener("click", showNewPlaceForm);
