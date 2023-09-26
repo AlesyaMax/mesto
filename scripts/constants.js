@@ -1,4 +1,4 @@
-export const selectors = {
+export const cardTemplateSelectors = {
   templateSelector: '.card-template',
   templateElement: '.elements__item',
   templatePhoto: '.elements__photo',
@@ -12,14 +12,20 @@ export const selectors = {
   popupPhotoCaptionSelector: '.popup__caption'
 };
 
-export const settings = {
+export const formSelectors = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_disabled',
   inputErrorClass: 'popup__input_type_error',
+  profileFormSelector: 'popup_edit-profile',
+  placeFormSelector: 'popup_add-place'
 };
 
-//export const popupCard = document.querySelector(selectors.popupCardSelector);
-//export const popupPhoto = popupCard.querySelector(selectors.popupPhotoSelector);
-//export const popupPhotoCaption = popupCard.querySelector(selectors.popupPhotoCaptionSelector);
+const profileFormElement = document.querySelector(".popup__edit");
+export const buttonEditProfile = document.querySelector(".profile__edit");
+export const inputName = profileFormElement.querySelector(".popup__input_type_name");
+export const inputDescription = profileFormElement.querySelector(".popup__input_type_description");
+export const profileName = document.querySelector(".profile__name");
+export const profileDescription = document.querySelector(".profile__description");
+export const buttonAddPlace = document.querySelector(".profile__add");

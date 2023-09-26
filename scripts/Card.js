@@ -1,4 +1,4 @@
-import { selectors } from "./constants.js";
+import { cardTemplateSelectors } from "./constants.js";
 
 
 class Card {
@@ -11,7 +11,7 @@ class Card {
   }
 
   _handleLikeClick() {
-    this.classList.toggle(selectors.likeIsActive);
+    this.classList.toggle(cardTemplateSelectors.likeIsActive);
   };
 
   _removeCard() {
