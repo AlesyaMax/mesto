@@ -1,4 +1,4 @@
-import { formSelectors } from './constants.js';
+import { formSelectors } from '../utils/constants.js';
 
 export default class UserInfo {
   constructor(nameSelector, descriptionSelector) {

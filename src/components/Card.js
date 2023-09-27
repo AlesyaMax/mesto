@@ -1,4 +1,4 @@
-import { cardTemplateSelectors } from "./constants.js";
+import { cardTemplateSelectors } from "../utils/constants.js";
 
 
 class Card {
