@@ -5,9 +5,7 @@ import {
   formSelectors,
   profileSelectors,
   buttonEditProfile,
-  buttonAddPlace,
-  inputName,
-  inputDescription
+  buttonAddPlace
 } from "../utils/constants.js";
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
@@ -18,9 +16,19 @@ import UserInfo from '../components/UserInfo.js';
 
 const userInfo = new UserInfo(profileSelectors.nameSelector, profileSelectors.descriptionSelector);
 
+const formsToValidate = [];
+
+const formList = Array.from(document.querySelectorAll(formSelectors.formSelector));
+
+formList.forEach((form) => {
+  const formToValidate = new FormValidator (formSelectors, form);
+  formToValidate.enableValidation();
+  formsToValidate.push(formToValidate);
+})
+
 const popupProfileForm = new PopupWithForm(formSelectors.profileFormSelector, {
-  handleSubmitForm: () => {
-    userInfo.setUserInfo();
+  handleSubmitForm: (data) => {
+    userInfo.setUserInfo(data);
     popupProfileForm.closePopup();
   }
 });
@@ -30,31 +38,29 @@ const popupNewPlaceForm = new PopupWithForm(formSelectors.placeFormSelector, {
     const newInputCard = createNewCard({
       name: dataSet.photoName, 
       link: dataSet.photoSource,
-      handleCardClick: (name, link) => {const popupCard = new PopupWithImage(cardTemplateSelectors.popupCardSelector);
+      handleCardClick: (name, link) => {const popupCard = new PopupWithImage(
+          cardTemplateSelectors.popupCardSelector,
+          cardTemplateSelectors.popupPhotoSelector,
+          cardTemplateSelectors.popupPhotoCaptionSelector
+          );
         popupCard.openPopup(name, link);
-        popupCard.setEventListenersOnPopups()}
-        }, 
-        cardTemplateSelectors);
-    renderCard(newInputCard);
+        }
+      }, 
+      cardTemplateSelectors);
+    cardList.addItem(newInputCard);
     popupNewPlaceForm.closePopup();
   }
 })
 
 const showProfileForm = () => {
   const profileInfo = userInfo.getUserInfo();
-  inputName.value = profileInfo.name;
-  inputDescription.value = profileInfo.description;
-  popupProfileForm.openPopup();
+  popupProfileForm.openPopup(formsToValidate);
+  popupProfileForm.setInputValues(profileInfo);
 };
 
 const showNewPlaceForm = () => {
-  popupNewPlaceForm.openPopup();
+  popupNewPlaceForm.openPopup(formsToValidate);
 };
-
-const renderCard = (card) => {
-  const cardsContainer = document.querySelector(cardTemplateSelectors.cardsContainer);
-  cardsContainer.prepend(card);
-}
 
 const createNewCard = (cardName, cardLink, cardData, handleCardClick) => {
   const newCardObject = new Card (cardName, cardLink, cardData, handleCardClick);
@@ -62,32 +68,35 @@ const createNewCard = (cardName, cardLink, cardData, handleCardClick) => {
   return newCard;
 }
 
-const initialCardList = new Section({
+const popupCards = [];
+
+const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
+    const popupCard = new PopupWithImage(
+      cardTemplateSelectors.popupCardSelector,
+      cardTemplateSelectors.popupPhotoSelector,
+      cardTemplateSelectors.popupPhotoCaptionSelector
+      );
+    popupCards.push(popupCard);
+   
     const newInitialCard = createNewCard({
       name: item.name, 
       link: item.link,
-      handleCardClick: (name, link) => {const popupCard = new PopupWithImage(cardTemplateSelectors.popupCardSelector);
-      popupCard.openPopup(name, link);
-      popupCard.setEventListenersOnPopups()}
+      handleCardClick: (name, link) => {
+        popupCard.openPopup(name, link);
+        }
       }, 
       cardTemplateSelectors);
-    initialCardList.addItem(newInitialCard);
-  }
+    
+    cardList.addItem(newInitialCard);}
   },
   cardTemplateSelectors.cardsContainer
 );
 
-initialCardList.renderItem();
+cardList.renderItem();
 
-const formList = Array.from(document.querySelectorAll(formSelectors.formSelector));
-
-formList.forEach((form) => {
-  const formToValidate = new FormValidator (formSelectors, form);
-  formToValidate.enableValidation();
-})
-
+popupCards.forEach(cardPopup => cardPopup.setEventListeners());
 popupProfileForm.setEventListeners();
 popupNewPlaceForm.setEventListeners();
 buttonEditProfile.addEventListener("click", showProfileForm);

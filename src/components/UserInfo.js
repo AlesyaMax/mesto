@@ -1,5 +1,3 @@
-import { formSelectors } from '../utils/constants.js';
-
 export default class UserInfo {
   constructor(nameSelector, descriptionSelector) {
     this._nameElement = document.querySelector(nameSelector);
@@ -8,17 +6,14 @@ export default class UserInfo {
 
   getUserInfo() {
     this._userInfo = {
-      name: this._nameElement.textContent,
-      description: this._descriptionElement.textContent
+      userName: this._nameElement.textContent,
+      userDescription: this._descriptionElement.textContent
     };  
     return this._userInfo;
   }
 
-  setUserInfo() {
-    this._inputList = document.querySelector(`.${formSelectors.profileFormSelector}`).querySelectorAll(formSelectors.inputSelector);
-    this._formValues = {};
-    this._inputList.forEach(input => this._formValues[input.name] = input.value);
-    this._nameElement.textContent = this._formValues.userName;
-    this._descriptionElement.textContent = this._formValues.userDescription;
+  setUserInfo(data) {
+    this._nameElement.textContent = data.userName;
+    this._descriptionElement.textContent = data.userDescription;
   }
 }

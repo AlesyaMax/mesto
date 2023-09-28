@@ -27,8 +27,5 @@ export const profileSelectors = {
   descriptionSelector: '.profile__description'
 }
 
-const profileFormElement = document.querySelector(".popup__edit");
 export const buttonEditProfile = document.querySelector(".profile__edit");
-export const inputName = profileFormElement.querySelector(".popup__input_type_name");
-export const inputDescription = profileFormElement.querySelector(".popup__input_type_description");
 export const buttonAddPlace = document.querySelector(".profile__add");
