@@ -16,14 +16,14 @@ import UserInfo from '../components/UserInfo.js';
 
 const userInfo = new UserInfo(profileSelectors.nameSelector, profileSelectors.descriptionSelector);
 
-const formsToValidate = [];
+const formsToValidate = {};
 
 const formList = Array.from(document.querySelectorAll(formSelectors.formSelector));
 
 formList.forEach((form) => {
   const formToValidate = new FormValidator (formSelectors, form);
   formToValidate.enableValidation();
-  formsToValidate.push(formToValidate);
+  formsToValidate[form.name] = formToValidate;
 })
 
 const popupProfileForm = new PopupWithForm(formSelectors.profileFormSelector, {
@@ -55,11 +55,13 @@ const popupNewPlaceForm = new PopupWithForm(formSelectors.placeFormSelector, {
 const showProfileForm = () => {
   const profileInfo = userInfo.getUserInfo();
   popupProfileForm.openPopup(formsToValidate);
+  formsToValidate["editForm"].resetValidation();
   popupProfileForm.setInputValues(profileInfo);
 };
 
 const showNewPlaceForm = () => {
   popupNewPlaceForm.openPopup(formsToValidate);
+  formsToValidate["newForm"].resetValidation();
 };
 
 const createNewCard = (cardName, cardLink, cardData, handleCardClick) => {

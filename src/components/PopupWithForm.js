@@ -21,11 +21,6 @@ export default class PopupWithForm extends Popup {
     });
   } 
 
-  openPopup(formsToResetValidation) {
-    super.openPopup();
-    formsToResetValidation.forEach(form => form.resetValidation());
-  }
-
   closePopup() {
     super.closePopup();
     this._form.reset();
