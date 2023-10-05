@@ -30,11 +30,11 @@
     <div class="popup__container">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__edit" name="editForm" novalidate>
-        <input class="popup__input popup__input_type_name" type="text" name="userName" id="userName" minlength="2" maxlength="40">
-        <span id="userName-error" class="popup__error popup__error_visible"></span>
-        <input class="popup__input popup__input_type_description" type="text" name="userDescription" id="userDescription" minlength="20" maxlength="200">
-        <span id="userDescription-error" class="popup__error popup__error_visible"></span>
+      <form class="popup__form popup__edit" id="editForm" novalidate>
+        <input class="popup__input popup__input_type_name" type="text" name="name" id="name" minlength="2" maxlength="40">
+        <span id="name-error" class="popup__error popup__error_visible"></span>
+        <input class="popup__input popup__input_type_description" type="text" name="about" id="about" minlength="20" maxlength="200">
+        <span id="about-error" class="popup__error popup__error_visible"></span>
         <button class="popup__save button_submit_profile button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -44,7 +44,7 @@
     <div class="popup__container">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__add popup__form" name="newForm" novalidate>
+      <form class="popup__add popup__form" id="newForm" novalidate>
         <input class="popup__input popup__input_type_place" type="text" name="photoName" id="photoName" placeholder="Название" minlength="2" maxlength="30">
         <span id="photoName-error" class="popup__error popup__error_visible"></span>
         <input class="popup__input popup__input_type_source" type="url" name="photoSource" id="photoSource" placeholder="Ссылка на картинку">
@@ -58,7 +58,7 @@
     <div class="popup__container popup__container_delete">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title popup__title-delete">Вы уверены?</h2>
-      <form class="popup__delete popup__form" name="deleteForm" novalidate>
+      <form class="popup__delete popup__form" id="deleteForm" novalidate>
         <button class="popup__save popup__save-delete button" type="submit">Да</button>
       </form>
     </div>
@@ -68,7 +68,7 @@
     <div class="popup__container popup__container_avatar">
       <button class="popup__close button" type="button"></button>
       <h2 class="popup__title popup__title-avatar">Обновить аватар</h2>
-      <form class="popup__avatar popup__form" name="editAvatarForm" novalidate>
+      <form class="popup__avatar popup__form" id="editAvatarForm" novalidate>
         <input class="popup__input popup__input_type_avatar" type="url" name="avatarSource" id="avatarSource" placeholder="Ссылка на картинку">
         <span id="avatarSource-error" class="popup__error popup__error_visible"></span>
         <button class="popup__save button_submit_avatar popup__save-avatar button" type="submit">Сохранить</button>

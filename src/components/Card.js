@@ -13,17 +13,13 @@ class Card {
     this._userID = userID;
   }
 
-  addLike(newData) {
-    this._likeButton.classList.add(this._templateData.likeIsActive)
-    this._likeCounter.textContent = newData.likes.length;
+  updateLikes(newData) {
+    this._likes = newData.likes
+    this.updateLikesView();
   }
 
-  removeLike(newData) {
-    this._likeButton.classList.remove(this._templateData.likeIsActive)
-    this._likeCounter.textContent = newData.likes.length;
-  }
-
-  _checkLikes() {
+  updateLikesView() {
+    this._likeCounter.textContent = this._likes.length;
     if(this._likes.find(like => like._id === this._userID)) {
       this._likeButton.classList.add(this._templateData.likeIsActive);
     } else {
@@ -52,14 +48,13 @@ class Card {
     this._photo.alt = this._name;
     this._photo.src = this._link;
     this._caption.textContent = this._name;
-    this._likeCounter.textContent = this._likesNumber;
     this._deleteButton.addEventListener("click", () => this._handleDeleteClick());
     this._likeButton.addEventListener("click", () => {
       this._handleLikeClick(this._likeButton, this._likeCounter)
     });
     this._photo.addEventListener("click", () => this._handleCardClick(this._name, this._link));
     this._checkOwner();
-    this._checkLikes();
+    this.updateLikesView();
     return this._card;
   }
 }
