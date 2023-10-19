@@ -57,8 +57,8 @@ const popupProfileForm = new PopupWithForm(formSelectors.profileFormSelector, {
     renderLoading(true, buttonSubmitUserInfo, "Сохранить");
     api
       .editUserInfo({
-        name: document.querySelector(".popup__input_type_name").value,
-        about: document.querySelector(".popup__input_type_description").value,
+        name: data.name,
+        about: data.about,
       })
       .then(() => {
         userInfo.setUserInfo(data);
